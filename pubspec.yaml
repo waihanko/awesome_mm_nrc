@@ -1,7 +1,7 @@
 name: awesome_mm_nrc
-description: "A new Flutter project."
+description: "Awesome MM NRC"
 version: 0.0.1
-homepage:
+homepage: https://github.com/waihanko/awesome_mm_nrc
 
 environment:
   sdk: '>=3.2.3 <4.0.0'
