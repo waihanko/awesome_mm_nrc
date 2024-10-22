@@ -35,7 +35,9 @@ class _StateTownshipSelectorState extends State<StateTownshipSelector> {
 
   void toggleLocale() {
     setState(() {
-      currentLocale = (currentLocale == NRCLocale.eng) ? NRCLocale.mm : NRCLocale.eng; // Toggle locale
+      currentLocale = (currentLocale == NRCLocale.eng)
+          ? NRCLocale.mm
+          : NRCLocale.eng; // Toggle locale
     });
   }
 
@@ -52,7 +54,9 @@ class _StateTownshipSelectorState extends State<StateTownshipSelector> {
             toggleLocale();
           },
         ),
-        const SizedBox(height: 20,),
+        const SizedBox(
+          height: 20,
+        ),
         AwesomeMMNRC.builder(
           locale: currentLocale,
           onNRCDataUpdated: (nrcData) {
@@ -62,13 +66,8 @@ class _StateTownshipSelectorState extends State<StateTownshipSelector> {
             print("NRC Data is ${selectedNRCData.formatNRCData()}");
             // Update selected NRC info
           },
-          nrcFormBuilder: (context,
-                  stateList,
-                  townshipList,
-                  nationalityList,
-                  onStateChange,
-                  onTownshipChange,
-                  onNationalityChange) =>
+          nrcFormBuilder: (context, stateList, townshipList, nationalityList,
+                  onStateChange, onTownshipChange, onNationalityChange) =>
               Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -128,58 +127,64 @@ class _StateTownshipSelectorState extends State<StateTownshipSelector> {
                   );
                 }).toList(),
               ),
-
             ],
           ),
         ),
-        const SizedBox(height: 40,),
+        const SizedBox(
+          height: 40,
+        ),
 
         // Display selected codes
         Text('Selected State Code: ${selectedNRCData.selectedStateCode}'),
         Text('Selected Township Code: ${selectedNRCData.selectedTownshipCode}'),
-        Text('Selected Nationality: ${selectedNRCData.selectedNationalityCode}'),
-        const SizedBox(height: 8,),
-        Text('Formatted Data: ${selectedNRCData.formatNRCData()}', style: TextStyle(color: Colors.red),),
+        Text(
+            'Selected Nationality: ${selectedNRCData.selectedNationalityCode}'),
+        const SizedBox(
+          height: 8,
+        ),
+        Text(
+          'Formatted Data: ${selectedNRCData.formatNRCData()}',
+          style: TextStyle(color: Colors.red),
+        ),
       ],
     );
   }
 }
-
 
 class NRCExample extends StatelessWidget {
   const NRCExample({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return  AwesomeMMNRC.builder(
+    return AwesomeMMNRC.builder(
       locale: NRCLocale.mm,
       onNRCDataUpdated: (nrcData) {
-        print("NRC Data is ${nrcData.formatNRCData()}"); // NRC Data is ၇/ညလပ(နိုင်)
+        print(
+            "NRC Data is ${nrcData.formatNRCData()}"); // NRC Data is ၇/ညလပ(နိုင်)
       },
-      nrcFormBuilder: (context,
-          stateList,
-          townshipList,
-          nationalityList,
-          onSelectState,
-          onSelectTownship,
-          onSelectNationality) =>
+      nrcFormBuilder: (context, stateList, townshipList, nationalityList,
+              onSelectState, onSelectTownship, onSelectNationality) =>
           Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              YourCustomStateWidget(stateList, onStateChange:(state)=> onSelectState.call(state)),
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          YourCustomStateWidget(stateList,
+              onStateChange: (state) => onSelectState.call(state)),
 
-              YourCustomTownshipWidget(townshipList, onTownshipChange:(township)=> onSelectTownship.call(township)),
+          YourCustomTownshipWidget(townshipList,
+              onTownshipChange: (township) => onSelectTownship.call(township)),
 
-              YourCustomNationalityWidget(nationalityList, onNationalityChange: (nationality) => onSelectNationality.call(nationality))
-            ],
-          ),
+          YourCustomNationalityWidget(nationalityList,
+              onNationalityChange: (nationality) =>
+                  onSelectNationality.call(nationality))
+        ],
+      ),
     );
   }
-
 }
 
 class YourCustomStateWidget extends StatelessWidget {
-  const YourCustomStateWidget(List<String> stateList, {super.key, required Function(dynamic state) onStateChange});
+  const YourCustomStateWidget(List<String> stateList,
+      {super.key, required Function(dynamic state) onStateChange});
 
   @override
   Widget build(BuildContext context) {
@@ -188,7 +193,8 @@ class YourCustomStateWidget extends StatelessWidget {
 }
 
 class YourCustomTownshipWidget extends StatelessWidget {
-  const YourCustomTownshipWidget(List<String> stateList, {super.key, required Function(dynamic state) onTownshipChange});
+  const YourCustomTownshipWidget(List<String> stateList,
+      {super.key, required Function(dynamic state) onTownshipChange});
 
   @override
   Widget build(BuildContext context) {
@@ -197,7 +203,8 @@ class YourCustomTownshipWidget extends StatelessWidget {
 }
 
 class YourCustomNationalityWidget extends StatelessWidget {
-  const YourCustomNationalityWidget(List<String> stateList, {super.key, required Function(dynamic state) onNationalityChange});
+  const YourCustomNationalityWidget(List<String> stateList,
+      {super.key, required Function(dynamic state) onNationalityChange});
 
   @override
   Widget build(BuildContext context) {
